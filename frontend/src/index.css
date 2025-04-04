@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #00F0FF;
+  --secondary-color: #FF00A0;
+  --tertiary-color: #8B5CF6;
+  --background-dark: #000;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B4C6FC;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* Personalização do scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #1AFFFF, #FF40B0);
+}
+
+/* Estilos para texto com brilho */
+.text-glow {
+  text-shadow: 0 0 8px var(--primary-color), 0 0 12px rgba(0, 240, 255, 0.5);
+}
+
+.text-glow-pink {
+  text-shadow: 0 0 8px var(--secondary-color), 0 0 12px rgba(255, 0, 160, 0.5);
+}
+
+/* Efeito de fade-in para elementos */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Grid de fundo estilo cyberpunk */
+.bg-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Neomorfismo para componentes */
+.neo-card {
+  background: rgba(10, 10, 20, 0.5);
+  border-radius: 16px;
+  box-shadow: 
+    -5px -5px 10px rgba(0, 240, 255, 0.05),
+    5px 5px 10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+/* Botões estilo cyberpunk */
+@layer components {
+  .cyberpunk-button {
+    @apply relative bg-transparent text-white font-semibold py-2 px-6 border-2 border-blue-400 hover:border-blue-300 transition-all rounded;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.7);
+  }
+  
+  .cyberpunk-button:before {
+    @apply content-[''] absolute top-0 left-0 w-0 h-full bg-blue-400/20 transition-all duration-300;
+  }
+  
+  .cyberpunk-button:hover:before {
+    @apply w-full;
+  }
+  
+  .cyberpunk-button-pink {
+    @apply relative bg-transparent text-white font-semibold py-2 px-6 border-2 border-pink-500 hover:border-pink-400 transition-all rounded;
+    box-shadow: 0 0 10px rgba(255, 0, 160, 0.7);
+    text-shadow: 0 0 5px rgba(255, 0, 160, 0.7);
+  }
+  
+  .cyberpunk-button-pink:before {
+    @apply content-[''] absolute top-0 left-0 w-0 h-full bg-pink-500/20 transition-all duration-300;
+  }
+  
+  .cyberpunk-button-pink:hover:before {
+    @apply w-full;
+  }
+}
+
+/* Animações */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--primary-color);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s infinite;
+}

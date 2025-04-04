@@ -1,0 +1,24 @@
+import React from 'react';
+import { BrowserRouter as Outlet } from 'react-router-dom';
+import { LanguageProvider } from '../contexts/LanguageContext';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import CookieBanner from '../components/CookieBanner';
+import  '../index.css';
+
+const App = () => {
+  return (
+    <LanguageProvider>
+      <div className="flex flex-col min-h-screen bg-black text-white overflow-x-hidden">
+        <Header />
+        <main className="flex-grow pt-16 relative">
+          <CookieBanner />
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
+  );
+};
+
+export default App;
